@@ -55,7 +55,7 @@ class Card extends HTMLElement {
   }
 
   render() {
-    const selectedId = this.product.type === 'broth' ? productContext.getSelectedBrothId() : productContext.getSelectedProteinId();
+    const selectedId = this.product.type === 'broth' ? productContext.selectedBrothId : productContext.selectedProteinId;
     const isActive = selectedId === this.product.id;
 
     this.innerHTML = `
@@ -116,7 +116,7 @@ class Card extends HTMLElement {
       <div class="card ${isActive ? 'active' : 'inactive'}">
         <img
           alt="${this.product.name}" 
-          src="${productContext.getSelectedBrothId() === this.product.id ? this.product.activeImage : this.product.inactiveImage}" 
+          src="${productContext.selectedBrothId === this.product.id ? this.product.activeImage : this.product.inactiveImage}" 
         />
         <h2 class="card-title">${this.product.name}</h2>
         <p class="card-description">${this.product.description}</p>

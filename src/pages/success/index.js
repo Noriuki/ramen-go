@@ -1,9 +1,15 @@
+import { renderPage } from '../../app.js';
 import '../../components/order-card';
 import orderContext from '../../context/order';
 
 export default async function SuccessPage() {
   const element = document.createElement('main');
-  const order = orderContext.getOrder();
+  const order = orderContext.order;
+
+  if (!order) {
+    await renderPage('home');
+    return;
+  }
 
   element.classList.add('page-container');
   element.innerHTML = `
@@ -44,11 +50,14 @@ export default async function SuccessPage() {
   </div>
   `
 
-  // const orderButton = element.querySelector('.order-button');
-  // orderButton.addEventListener('click', async (e) => {
-  //   e.preventDefault();
-  //   await renderPage('home');
-  // });
+  const orderButton = element.querySelector('.order-button');
+
+  orderButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await renderPage('home');
+  });
+
+  window.scrollTo(0, 0);
 
   return element;
 }

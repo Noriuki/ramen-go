@@ -16,7 +16,6 @@ export default async function SplashScreen() {
     }
     .hero-section {
       width: 100%;
-      height: 100vh;
       display: flex;
       padding: 1rem;
       align-items: center;
@@ -68,6 +67,7 @@ export default async function SplashScreen() {
     }
 
     @media (min-width: 768px) {
+
       .brand {
         font-size: 2em;  
       }
@@ -79,6 +79,7 @@ export default async function SplashScreen() {
       }
       .hero-section {
         padding: 2rem;
+        height: 100vh;
         justify-content: center;
       }
       .container{

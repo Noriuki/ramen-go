@@ -1,6 +1,7 @@
 import { renderPage } from '../../app.js';
 import '../../components/product-card';
 import '../../components/product-carousel';
+import appContext from '../../context/app';
 import orderContext from '../../context/order';
 import productContext from '../../context/product';
 import apiService from '../../services/api';
@@ -13,11 +14,9 @@ export default async function Home() {
 
   const brothCarousel = await renderBrothCarousel();
   brothCarousel.style.width = '100%';
-  // brothCarousel.style.height = '45vh';
 
   const proteinCarousel = await renderProteinCarousel();
   proteinCarousel.style.width = '100%';
-  // proteinCarousel.style.height = '45vh';
 
   const orderButton = document.createElement('button');
   orderButton.classList.add('order-button');
@@ -41,8 +40,8 @@ export default async function Home() {
 
 function updateOrderButtonState() {
   const orderButton = document.querySelector('.order-button');
-  const selectedBrothId = productContext.getSelectedBrothId();
-  const selectedProteinId = productContext.getSelectedProteinId();
+  const selectedBrothId = productContext.selectedBrothId;
+  const selectedProteinId = productContext.selectedProteinId;
 
   if (selectedBrothId && selectedProteinId) {
     orderButton.removeAttribute('disabled');
@@ -50,19 +49,23 @@ function updateOrderButtonState() {
 }
 
 const handleOrder = async () => {
+  appContext.setLoading(true);
   try {
-    const selectedBrothId = productContext.getSelectedBrothId();
-    const selectedProteinId = productContext.getSelectedProteinId();
+    const selectedBrothId = productContext.selectedBrothId;
+    const selectedProteinId = productContext.selectedProteinId;
 
     const res = await apiService.post(`/orders`, {
       brothId: selectedBrothId,
       proteinId: selectedProteinId,
     });
-
     orderContext.setOrder(res);
+    productContext.setSelectedBrothId(null);
+    productContext.setSelectedProteinId(null);
     await renderPage('success');
   } catch (error) {
     console.error('Erro ao realizar pedido:', error);
+  } finally {
+    appContext.setLoading(false);
   }
 }
 

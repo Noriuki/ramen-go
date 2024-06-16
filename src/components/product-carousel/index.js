@@ -111,6 +111,7 @@ class ProductCarousel extends HTMLElement {
         }
 
         product-card {
+          margin: auto;
           cursor: pointer;
         }
       

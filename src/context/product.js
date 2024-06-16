@@ -1,6 +1,4 @@
 class ProductContext {
-  // brothList = [];
-  // proteinList = [];
   selectedBrothId = null;
   selectedProteinId = null;
 
@@ -12,18 +10,11 @@ class ProductContext {
     document.dispatchEvent(this.brothChanged);
   }
 
-  getSelectedBrothId() {
-    return this.selectedBrothId;
-  }
-
   setSelectedProteinId(id) {
     this.selectedProteinId = id;
     document.dispatchEvent(this.proteinChanged);
   }
 
-  getSelectedProteinId() {
-    return this.selectedProteinId;
-  }
 }
 
 const productContext = new ProductContext();

@@ -4,10 +4,6 @@ class OrderContext {
   setOrder(order) {
     this.order = order;
   }
-
-  getOrder() {
-    return this.order;
-  }
 }
 
 const orderContext = new OrderContext();
