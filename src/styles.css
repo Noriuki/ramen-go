@@ -1,0 +1,65 @@
+body {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+:root {
+  --default-blue: #1820EF;
+  --default-yellow: #FFC024;
+  --default-red: #FF4E42;
+  --default-gray: #FAFAED;
+  --default-white: #FFFFFF;
+  --default-black: #000000;
+}
+
+.page-container {
+  display: flex;
+  overflow: hidden;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--default-red);
+  border-radius: 6px;
+}
+
+.order-button {
+  border: none;
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.5em;
+  margin: 1rem auto;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  color: var(--default-white);
+  background-color: var(--default-blue);
+}
+
+.order-button span {
+  padding-left: 1rem;
+  color: var(--default-yellow);
+}
+
+.order-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.order-button:disabled span {
+  color: #fff;
+}
