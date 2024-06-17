@@ -32,6 +32,17 @@ export default async function SuccessPage() {
       align-items: center;
       text-align: center;
     }
+    @media (min-width: 768px) {
+      .order-container {
+        flex-direction: row;
+      }
+      order-card {
+        width: 50%;
+      }
+      .new-order__container{
+        width: 50%;
+      }
+    }
   </style>
   <div class="order-container">
     <order-card

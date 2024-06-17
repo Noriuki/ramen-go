@@ -43,20 +43,33 @@ class ProductCarousel extends HTMLElement {
 
     this.innerHTML = `
       <style>
-        .carousel-container {
+        .carousel {
+          flex: 1;
+          width: 100%;
+          display: flex;
+          column-gap: 10px;
+          overflow-x: auto;
+          align-items: center;
+          scroll-behavior: smooth;
+          scroll-snap-type: x mandatory;
+          justify-content: space-between;
+          transition: transform 1s ease-in-out;
+        }
+
+        .carousel__container {
           margin: 20px 0;
           width: 100%;
           height: 100%;
           display: flex;
           padding: 5px;
-          row-gap: 20px;
+          row-gap: 30px;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           text-align: center;
         }
 
-        .carousel-title-container {
+        .carousel__title-container {
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -66,36 +79,25 @@ class ProductCarousel extends HTMLElement {
           row-gap: 5px;
         }
 
-        .carousel-title {
+        .carousel__title {
           margin: 0;
           font-size: 1.2rem;
           font-weight: 900;
         }
 
-        .carousel-subtitle {
+        .carousel__subtitle {
           margin: 0;
           font-size: 1rem;
           font-weight: 500;
         }
 
-        .carousel {
-          flex: 1;
-          width: 100%;
-          display: flex;
-          column-gap: 10px;
-          overflow-x: auto;
-          align-items: center;
-          justify-content: space-between;
-          scroll-snap-type: x mandatory;
-        }
-
-        .indicators {
+        .carousel__indicators {
           display: flex;
           margin-top: 10px;
           justify-content: center;
         }
 
-        .indicator {
+        .carousel__indicator {
           width: 10px;
           height: 10px;
           margin: 0 5px;
@@ -104,7 +106,7 @@ class ProductCarousel extends HTMLElement {
           background-color: gray;
         }
 
-        .indicator.active {
+        .carousel__indicator.active {
           width: 32px;
           border-radius: 5px;
           background-color: var(--default-red);
@@ -113,22 +115,23 @@ class ProductCarousel extends HTMLElement {
         product-card {
           margin: auto;
           cursor: pointer;
+          transition: transform 1s ease-in-out;
         }
       
         @media (min-width: 768px) {
-          .carousel-title {
+          .carousel__title {
             font-size: 2rem;
           }
 
-          .carousel-subtitle {
+          .carousel__subtitle {
             font-size: 1.5rem;
           }
         }
       </style>
-      <div class="carousel-container">
-        <div class="carousel-title-container">
-          <h1 class="carousel-title">${title}</h1>
-          <p class="carousel-subtitle">${subTitle}</p>
+      <div class="carousel__container">
+        <div class="carousel__title-container">
+          <h1 class="carousel__title">${title}</h1>
+          <p class="carousel__subtitle">${subTitle}</p>
         </div>
         <div class="carousel">
           ${visibleProducts.map((product) => `
@@ -145,9 +148,9 @@ class ProductCarousel extends HTMLElement {
           `).join('')}
         </div>
         ${products.length > slidesToShow ? `
-          <div class="indicators">
+          <div class="carousel__indicators">
             ${products.map((_, index) => `
-              <div class="indicator ${index === this.currentSlide ? 'active' : ''}" data-slide-index="${index}"></div>
+              <div class="carousel__indicator ${index === this.currentSlide ? 'active' : ''}" data-slide-index="${index}"></div>
             `).join('')}
           </div>
         ` : ''}

@@ -60,7 +60,7 @@ class Card extends HTMLElement {
 
     this.innerHTML = `
       <style>
-        .card {
+        .product-card {
           width: 350px;
           height: 350px;
           display: flex;
@@ -73,54 +73,57 @@ class Card extends HTMLElement {
           box-shadow: 0px 4px 12px rgba(224, 219, 191, 0.6);
         }
 
-        .card.active {
+        .product-card.active {
           background-color: var(--default-blue);
         }
         
-        .card.active .card-title {
+        .product-card.active .product-card__title {
           color: var(--default-white);
         }
-        .card.active .card-description {
+
+        .product-card.active .product-card__description {
           color: var(--default-white);
         }
-        .card.active .card-price {
+
+        .product-card.active .product-card__price {
           color: var(--default-yellow);
         }
 
-        .card-image {
+        .product-card__image {
           width: 50%;
           object-fit: contain;
         }
 
-        .card-title {
+        .product-card__title {
           margin: 0;
           font-weight: 700;
           font-size: 1.5em;
           color: var(--default-blue);
         }
 
-        .card-description {
+        .product-card__description {
           margin: 0;
           font-size: 1.2em;
           font-weight: 600;
           text-align: center;
         }
 
-        .card-price {
+        .product-card__price {
           font-size: 1.2em;
           font-weight: 900;
           color: var(--default-red);
         }
 
       </style>
-      <div class="card ${isActive ? 'active' : 'inactive'}">
+      <div class="product-card ${isActive ? 'active' : 'inactive'}">
         <img
+          class="product-card__image"
           alt="${this.product.name}" 
           src="${productContext.selectedBrothId === this.product.id ? this.product.activeImage : this.product.inactiveImage}" 
         />
-        <h2 class="card-title">${this.product.name}</h2>
-        <p class="card-description">${this.product.description}</p>
-        <span class="card-price">${this.product.price}</span>
+        <h2 class="product-card__title">${this.product.name}</h2>
+        <p class="product-card__description">${this.product.description}</p>
+        <span class="product-card__price">${this.product.price}</span>
       </div>
     `;
   }

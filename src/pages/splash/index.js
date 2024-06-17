@@ -26,7 +26,7 @@ export default async function SplashScreen() {
       background-image: url(${require('../../assets/images/red-pattern.png')});
     }
 
-    .delivery-girl-container {
+    .delivery-girl__container {
       width: 100%;
       max-width: 300px;
     }
@@ -71,7 +71,7 @@ export default async function SplashScreen() {
       .brand {
         font-size: 2em;  
       }
-      .delivery-girl-container {
+      .delivery-girl__container {
         width: 50%;
         z-index: 1;
         max-width: 600px;
@@ -107,7 +107,7 @@ export default async function SplashScreen() {
   </style>
   <div class="hero-section">
     <h1 class="brand">ramenGO!</h1>
-    <div class="delivery-girl-container">
+    <div class="delivery-girl__container">
       <img 
         width="100%"
         height="100%"
