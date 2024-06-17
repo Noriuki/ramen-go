@@ -69,7 +69,9 @@ export default async function SplashScreen() {
     @media (min-width: 768px) {
 
       .brand {
+        top: 20px;
         font-size: 2em;  
+        position: absolute;
       }
       .delivery-girl__container {
         width: 50%;
